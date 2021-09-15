@@ -125,9 +125,9 @@ STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

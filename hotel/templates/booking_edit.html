@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}
+    Booking Details - ID: {{ booking.id }}
+{% endblock title %}
+{% block content %}
+
+{% load rest_framework %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="method" value="PUT">
+    {% render_field serializer.surname style=style %}
+    {% render_field serializer.rooms style=style %}
+    {% render_field serializer.check_in style=style %}
+    {% render_field serializer.check_out style=style %}
+    <button type="submit" class="btn btn-success my-1">Update Booking</button>
+</form>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="method" value="DELETE">
+    <button type="submit" class="btn btn-danger">Delete Booking</button>
+</form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}
+    Book a Room
+{% endblock %}
+{% block content %}
+{% load rest_framework %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="method" value="PUT">
+    {% render_field serializer.surname style=style %}
+    {% render_field serializer.rooms style=style %}
+    {% render_field serializer.check_in style=style %}
+    {% render_field serializer.check_out style=style %}
+    <button type="submit" class="btn btn-success my-1">Book</button>
+</form>
+
+{% endblock %}

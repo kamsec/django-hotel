@@ -1,0 +1,10 @@
+__pycache__/
+.idea/
+venv/
+
+task.txt
+todos.txt
+db_dump.json
+t.py
+
+secrets.ini

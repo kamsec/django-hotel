@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block title %}
+    Room List
+{% endblock %}
+{% block content %}
+    {% if user.is_hotel_staff %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Number</th>
+                        <th scope="col" class="text-center">Class</th>
+                        <th scope="col" class="text-center"></th>
+                        <th scope="col" class="text-center"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for room in rooms %}
+                    <tr>
+                        <th scope="row" class="text-center">{{ forloop.counter }}</th>
+                        <th scope="col" class="text-center">{{ room.number }}</th>
+                        <th scope="col" class="text-center">{{ room.get_category }}</th>
+                        <th scope="col"><form action="{% url 'hotel:rooms' %}{{room.number}}/" method="GET">
+                                            <input type="hidden" name="method" value="EDIT">
+                                            <button type="submit" class="btn btn-success py-0">Edit</button>
+                                        </form></th>
+                        <th scope="col"><form action="{% url 'hotel:rooms' %}{{room.number}}/" method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="method" value="DELETE">
+                                            <button type="submit" class="btn btn-danger py-0">Delete</button>
+                                        </form></th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+         <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Number</th>
+                        <th scope="col" class="text-center">Class</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for room in rooms %}
+                    <tr>
+                        <th scope="row" class="text-center">{{ forloop.counter }}</th>
+                        <th scope="col" class="text-center">{{ room.number }}</th>
+                        <th scope="col" class="text-center">{{ room.get_category }}</th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}

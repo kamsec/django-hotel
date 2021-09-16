@@ -1,5 +1,5 @@
 
- #### System do rezerwacji miejsc w hotelu.
+ ### System do rezerwacji miejsc w hotelu.
  
 ![Screenshot 2021-09-16](https://user-images.githubusercontent.com/62106309/133615433-4ac6c2de-b797-4cd6-a6f7-12810c5201fa.png)
 
@@ -13,7 +13,7 @@
 </ul>
 
 
-##### Treść zadania:
+### Treść zadania:
 
 Z wykorzystaniem
 - Python 3.x

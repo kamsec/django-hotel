@@ -11,7 +11,22 @@
     {% render_field serializer.rooms style=style %}
     {% render_field serializer.check_in style=style %}
     {% render_field serializer.check_out style=style %}
+    <div>
+        <span>Days: </span><span id="days">Select dates</span><br>
+        <span>Price: </span><span id="price">0</span>$
+    </div>
     <button type="submit" class="btn btn-success my-1">Book</button>
 </form>
+<div>
+
+</div>
+
+
+<script>
+$(document).ready(function() {
+    var prices = {{ ROOM_PRICES|safe }};
+    get_days_and_price(prices);
+});
+</script>
 
 {% endblock %}

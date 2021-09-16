@@ -28,11 +28,11 @@ cfg_secrets = configparser.ConfigParser(interpolation=None)
 cfg_secrets.read(SECRETS_FILE_ABS)
 SECRET_KEY = cfg_secrets['DEFAULT']['SECRET_KEY']
 # '''
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_HOTEL_SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = False  # todo heroku - False, local - True
 
 ALLOWED_HOSTS = ['*']
 
@@ -118,11 +118,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

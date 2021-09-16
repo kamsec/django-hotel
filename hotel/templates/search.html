@@ -5,9 +5,9 @@
 {% block content %}
 
 {% load rest_framework %}
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-xl-3">
+        <div class="col-xl-2">
             <form action="" method="GET">
                 <!--{% csrf_token %}-->
                 {% render_field serializer.surname style=style %}
@@ -18,7 +18,7 @@
                 <button type="submit" class="btn btn-success my-1">Search</button>
             </form>
         </div>
-        <div class="col-xl-9">
+        <div class="col-xl-10">
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -70,6 +70,7 @@
 
 <script>
     $( "input[name='created']" ).get(0).type = 'date';
+    $( "label:contains('Rooms')" ).text('Room (choose one)');
 </script>
 
 {% endblock %}

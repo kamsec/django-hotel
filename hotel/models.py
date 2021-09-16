@@ -14,6 +14,7 @@ class Room(models.Model):
     def get_category(self):
         return ROOM_CATEGORIES[self.category - 1][1]
 
+
 class Booking(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     surname = models.CharField(max_length=30)

@@ -55,22 +55,55 @@
                 <thead>
                     <tr>
                         <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">User</th>
+                        <th scope="col" class="text-center">Surname</th>
                         <th scope="col" class="text-center">Rooms</th>
                         <th scope="col" class="text-center">Check In</th>
                         <th scope="col" class="text-center">Check Out</th>
+                        <th scope="col" class="text-center">Days</th>
+                        <th scope="col" class="text-center">Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for booking in bookings %}
-                    <tr>
+                    <tr class="{% if booking.user == user %} text-success {% endif %}">
                         <th scope="row" class="text-center">{{ forloop.counter }}</th>
+                        <th scope="col" class="text-center">
+                            {% if booking.user == user %}
+                                {{ booking.user }}
+                            {% else %}
+                                ***
+                            {% endif %}
+                        </th>
+                        <th scope="col" class="text-center">
+                            {% if booking.user == user %}
+                                {{ booking.surname }}
+                            {% else %}
+                                ***
+                            {% endif %}
+                        </th>
                         <th scope="col" class="text-center">{{ booking.get_rooms }}</th>
                         <th scope="col" class="text-center">{{ booking.check_in|date:"d/m/Y" }}</th>
                         <th scope="col" class="text-center">{{ booking.check_out|date:"d/m/Y" }}</th>
+                        <th scope="col" class="text-center">{{ booking.get_booking_time }}</th>
+                        <th scope="col" class="text-center">
+                            {% if booking.user == user %}
+                                {{ booking.get_booking_price }}$
+                            {% else %}
+                                ***
+                            {% endif %}
+                        </th>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+            {% if user.is_hotel_client %}
+            <div class="text-center">
+                This is the list of all our bookings.<br>
+                Your ones are marked <span class="text-success">green.</span>
+                <p>Only staff can make edits.</p>
+            </div>
+            {% endif %}
         </div>
     {% endif %}
     {% if not user.is_authenticated %}

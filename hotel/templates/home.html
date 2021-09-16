@@ -3,5 +3,36 @@
     Hotel Management System
 {% endblock title %}
 {% block content %}
-todo
+
+
+<ul>
+    <h4>Front end:</h4>
+    Użytkownik niezalogowany:
+    <li>- może zobaczyć listę wszystkich pokoi</li>
+    <li>- może zobaczyć listę wszystkich rezerwacji z zakrytymi danymi</li>
+</ul>
+
+<ul>
+    Użytkownik zalogowany (Client):
+    <li>- może zobaczyć listę wszystkich pokoi</li>
+    <li>- może zobaczyć listę wszystkich rezerwacji z zakrytymi danymi innych użytkowników</li>
+    <li>- może tworzyć nowe rezerwacje</li>
+</ul>
+
+<ul>
+    Użytkownik zalogowany (Staff):
+    <li>- może zobaczyć listę wszystkich pokoi oraz rezerwacji z odkrytymi danymi</li>
+    <li>- może tworzyć nowe oraz edytować i usuwać dowolne rezerwacje i pokoje</li>
+    <li>- może wyszukiwać rezerwacje wg. wybranych kryteriów</li>
+</ul>
+
+<div>
+    <ul>
+        <li><a href="https://kamsec-django-hotel.herokuapp.com/">https://kamsec-django-hotel.herokuapp.com/</a> - Front end (ta strona)</li>
+        <li><a href="https://kamsec-django-hotel.herokuapp.com/api">https://kamsec-django-hotel.herokuapp.com/api</a> - API</li>
+        <li><a href="https://kamsec-django-hotel.herokuapp.com/swagger">https://kamsec-django-hotel.herokuapp.com/swagger</a> - dokumentacja</li>
+        <li><a href="https://github.com/kamsec/django-hotel">https://github.com/kamsec/django-hotel</a> - repozytorium na GitHubie</li>
+    </ul>
+</div>
 {% endblock %}
+

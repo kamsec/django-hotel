@@ -12,6 +12,10 @@
     {% render_field serializer.rooms style=style %}
     {% render_field serializer.check_in style=style %}
     {% render_field serializer.check_out style=style %}
+    <div>
+        <span>Days: </span><span id="days">Select dates</span><br>
+        <span>Price: </span><span id="price">0</span>$
+    </div>
     <button type="submit" class="btn btn-success my-1">Update Booking</button>
 </form>
 <form action="" method="POST">
@@ -19,4 +23,14 @@
     <input type="hidden" name="method" value="DELETE">
     <button type="submit" class="btn btn-danger">Delete Booking</button>
 </form>
+
+<script>
+$(document).ready(function() {
+    var prices = {{ ROOM_PRICES|safe }};
+    get_days_and_price(prices)
+    $("[name='check_in'], [name='check_out'], [name='rooms']").trigger("change");
+});
+</script>
+
+
 {% endblock %}

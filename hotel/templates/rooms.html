@@ -57,4 +57,7 @@
             </table>
         </div>
     {% endif %}
+    {% if not user.is_hotel_staff %}
+    <div class="text-center">This is the list of all our rooms.</div>
+    {% endif %}
 {% endblock %}

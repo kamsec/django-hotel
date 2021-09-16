@@ -1,5 +1,6 @@
 
 from datetime import datetime
+from json import dumps
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.contrib import messages
@@ -16,6 +17,7 @@ from .models import Room, Booking
 from .serializers import RoomSerializer, BookingSerializer, SearchBookingSerializer
 from .permissions import HasGroupPermission, REQ_GROUPS_BOOKINGS, REQ_GROUPS_BOOKINGS_UPDATE, REQ_GROUPS_ROOMS
 from .forms import SignUpForm
+from .config import ROOM_PRICES
 
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # %%%%%%%%%%%%%%%%%%%%%%%%% API VIEWS %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -198,7 +200,7 @@ class BookingAdd(BookingGenericAPIView):
 
     def get(self, request):
         serializer = BookingSerializer
-        return Response({'serializer': serializer, 'style': self.style})
+        return Response({'serializer': serializer, 'style': self.style, 'ROOM_PRICES': dumps(ROOM_PRICES)})
 
     def post(self, request):
         serializer = BookingSerializer(data=request.data, context={'request': request})
@@ -215,7 +217,8 @@ class BookingEdit(BookingGenericAPIView):
     def get(self, request, pk):
         booking = get_object_or_404(Booking, pk=pk)
         serializer = BookingSerializer(instance=booking)
-        return Response({'serializer': serializer, 'booking': booking, 'style': self.style})
+        return Response({'serializer': serializer, 'booking': booking, 'style': self.style,
+                         'ROOM_PRICES': dumps(ROOM_PRICES)})
 
     def post(self, request, pk):  # HTML PUT and DELETE workaround
         method = request.POST.get("method", "")  # hidden input in forms, two buttons
@@ -237,7 +240,7 @@ class BookingEdit(BookingGenericAPIView):
             serializer.save()
             messages.success(request, f'Booking {instance.id} successfully edited!')
             return redirect('/bookings/')
-        return Response({'serializer': serializer, 'style': self.style})
+        return Response({'serializer': serializer, 'style': self.style, 'ROOM_PRICES': dumps(ROOM_PRICES)})
 
 
 class BookingSearch(BookingGenericAPIView):

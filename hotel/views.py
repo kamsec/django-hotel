@@ -18,6 +18,7 @@ from .serializers import RoomSerializer, BookingSerializer, SearchBookingSeriali
 from .permissions import HasGroupPermission, REQ_GROUPS_BOOKINGS, REQ_GROUPS_BOOKINGS_UPDATE, REQ_GROUPS_ROOMS
 from .forms import SignUpForm
 from .config import ROOM_PRICES
+from HMS.settings import REGISTRATION_OPEN
 
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # %%%%%%%%%%%%%%%%%%%%%%%%% API VIEWS %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -102,12 +103,17 @@ def register(request):  # FBV just once for simplicity here
     context = {}
     form = SignUpForm(request.POST or None)
     if request.method == "POST":
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request, f'Registered successfully!')
+        if REGISTRATION_OPEN is False:
+            messages.warning(request, f'Registrations are currently disabled!')
             return render(request, 'home.html')
+        else:
+            if form.is_valid():
+                user = form.save()
+                login(request, user)
+                messages.success(request, f'Registered successfully!')
+                return render(request, 'home.html')
     context['form'] = form
+    context['REGISTRATION_OPEN'] = REGISTRATION_OPEN
     return render(request, 'registration/register.html', context)
 
 

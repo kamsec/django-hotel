@@ -7,9 +7,9 @@
 <ul>
  <li><a href="https://kamsec-django-hotel.herokuapp.com/">https://kamsec-django-hotel.herokuapp.com/</a> - Front end</li>
  <li><a href="https://kamsec-django-hotel.herokuapp.com/api">https://kamsec-django-hotel.herokuapp.com/api</a> - API</li>
- <li><a href="https://kamsec-django-hotel.herokuapp.com/swagger">https://kamsec-django-hotel.herokuapp.com/swagger</a> - dokumentacja</li>
- <li><a href="https://github.com/kamsec/django-hotel">https://github.com/kamsec/django-hotel</a> - repozytorium na GitHubie (ta strona)</li>
- <li><a href="https://github.com/kamsec/django-hotel/blob/master/hotel/tests.py">https://github.com/kamsec/django-hotel/blob/master/hotel/tests.py</a> - testy</li>
+ <li><a href="https://kamsec-django-hotel.herokuapp.com/swagger">https://kamsec-django-hotel.herokuapp.com/swagger</a> - Dokumentacja</li>
+ <li><a href="https://github.com/kamsec/django-hotel">https://github.com/kamsec/django-hotel</a> - Repozytorium na GitHubie (ta strona)</li>
+ <li><a href="https://github.com/kamsec/django-hotel/blob/master/hotel/tests.py">https://github.com/kamsec/django-hotel/blob/master/hotel/tests.py</a> - Testy</li>
 </ul>
 
 
